@@ -11,13 +11,6 @@ app.engine('hbs', handlebars.engine({
 
 app.set('view engine', 'hbs');
 
-app.use((req, res, next) => {
-    if (req.url.endsWith('.css')) {
-        res.setHeader('Content-Type', 'text/css');
-    }
-    next();
-});
-
 app.use(express.static('src/public'));
 
 app.set('views', './src/views');
@@ -36,6 +29,10 @@ app.get('/create', (req, res) => {
 
 app.get('/search', (req, res) => {
     res.render('search');
+});
+
+app.get('*', (req, res) => {
+    res.render('404');
 });
 
 app.listen(port, console.log(`The app is running on http://localhost:3000`));
