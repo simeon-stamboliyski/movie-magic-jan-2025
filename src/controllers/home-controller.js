@@ -1,10 +1,10 @@
 import express from 'express';
-import movies from '../config/database.js';
+import movieObj from '../config/database.js';
 
 const homeController = express.Router();
 
 homeController.get('/', (req, res) => {
-    res.render('home', movies);
+    res.render('home', movieObj);
 });
 
 homeController.get('/about', (req, res) => {
