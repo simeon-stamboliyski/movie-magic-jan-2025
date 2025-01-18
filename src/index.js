@@ -23,11 +23,11 @@ app.use(express.static('src/public'));
 app.set('views', './src/views');
 
 app.get('/', (req, res) => {
-    res.render('home', {layout: false});
+    res.render('home');
 });
 
 app.get('/about', (req, res) => {
-    res.render('about', {layout: false});
+    res.render('about');
 });
 
 app.listen(port, console.log(`The app is running on http://localhost:3000`));
