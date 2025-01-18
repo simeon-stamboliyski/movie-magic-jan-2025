@@ -11,6 +11,13 @@ app.engine('hbs', handlebars.engine({
 
 app.set('view engine', 'hbs');
 
+app.use((req, res, next) => {
+    if (req.url.endsWith('.css')) {
+        res.setHeader('Content-Type', 'text/css');
+    }
+    next();
+});
+
 app.use(express.static('src/public'));
 
 app.set('views', './src/views');
