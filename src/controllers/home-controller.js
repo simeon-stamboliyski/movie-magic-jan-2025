@@ -1,25 +1,14 @@
 import express from 'express';
+import movies from '../config/database.js';
 
-const homeRouter = express.Router();
+const homeController = express.Router();
 
-homeRouter.get('/', (req, res) => {
-    res.render('home');
+homeController.get('/', (req, res) => {
+    res.render('home', movies);
 });
 
-homeRouter.get('/about', (req, res) => {
+homeController.get('/about', (req, res) => {
     res.render('about');
 });
 
-homeRouter.get('/create', (req, res) => {
-    res.render('create');
-});
-
-homeRouter.get('/search', (req, res) => {
-    res.render('search');
-});
-
-homeRouter.get('*', (req, res) => {
-    res.render('404');
-});
-
-export default homeRouter;
+export default homeController;
