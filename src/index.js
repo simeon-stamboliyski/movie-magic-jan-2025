@@ -12,7 +12,7 @@ app.engine('hbs', handlebars.engine({
 app.set('view engine', 'hbs');
 
 app.get('/', (req, res) => {
-    res.send('It works!');
+    res.render('home', {layout: false});
 });
 
 app.listen(port, console.log(`The app is running on http://localhost:3000`));
