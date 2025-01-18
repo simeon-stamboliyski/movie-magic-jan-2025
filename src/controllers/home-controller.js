@@ -1,25 +1,25 @@
 import express from 'express';
 
-const router = express.Router();
+const homeRouter = express.Router();
 
-router.get('/', (req, res) => {
+homeRouter.get('/', (req, res) => {
     res.render('home');
 });
 
-router.get('/about', (req, res) => {
+homeRouter.get('/about', (req, res) => {
     res.render('about');
 });
 
-router.get('/create', (req, res) => {
+homeRouter.get('/create', (req, res) => {
     res.render('create');
 });
 
-router.get('/search', (req, res) => {
+homeRouter.get('/search', (req, res) => {
     res.render('search');
 });
 
-router.get('*', (req, res) => {
+homeRouter.get('*', (req, res) => {
     res.render('404');
 });
 
-export default router;
+export default homeRouter;
