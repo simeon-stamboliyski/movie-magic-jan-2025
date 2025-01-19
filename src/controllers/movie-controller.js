@@ -8,8 +8,15 @@ movieController.get('/create', (req, res) => {
     res.render('create');
 });
 
+movieController.post('/create', (req, res) => {
+    movieService.createMovie(req.body);
+    res.redirect('/');
+});
+
 movieController.get('/search', (req, res) => {
-    res.render('search', movieObj);
+    let filter = req.query;
+    const movies = movieService.getAll(filter);
+    res.render('search', { movies, filter });
 });
 
 movieController.get('/:movieId/details', (req, res) => {

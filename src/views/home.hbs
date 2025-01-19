@@ -17,6 +17,12 @@
         </div>
         {{/each}}
 
+        <script>
+            if ({{reload}}) {
+                location.reload();
+            }
+        </script>
+
         <!-- If there are still no posts in the database display: -->
         <!-- <div class="no-posts">
             <p class="no-offer">There are no posts yet...</p>
