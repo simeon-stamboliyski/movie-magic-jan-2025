@@ -12,9 +12,9 @@ movieController.post('/create', (req, res) => {
     res.redirect('/');
 });
 
-movieController.get('/search', (req, res) => {
+movieController.get('/search', async (req, res) => {
     let filter = req.query;
-    const movies = movieService.getAll(filter);
+    const movies = await movieService.getAll(filter).lean();
     res.render('search', { movies, filter });
 });
 
