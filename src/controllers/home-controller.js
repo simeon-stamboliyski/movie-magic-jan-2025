@@ -1,10 +1,11 @@
 import express from 'express';
-import movieObj from '../config/database.js';
+import movieService from '../services/movie-service.js';
 
 const homeController = express.Router();
 
-homeController.get('/', (req, res) => {
-    res.render('home', movieObj);
+homeController.get('/', async (req, res) => {
+    let movies = await movieService.getAll().lean();
+    res.render('home', { movies: movies });
 });
 
 homeController.get('/about', (req, res) => {

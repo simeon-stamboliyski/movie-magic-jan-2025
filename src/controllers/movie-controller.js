@@ -1,5 +1,4 @@
 import express from 'express';
-import movieObj from '../config/database.js';
 import movieService from '../services/movie-service.js';
 
 const movieController = express.Router();

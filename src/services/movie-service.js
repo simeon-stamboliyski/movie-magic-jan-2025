@@ -1,24 +1,24 @@
 import { v4 as uuid } from 'uuid';
 import fs from 'fs';
 import path from 'path';
-import movieObj from '../config/database.js';
+import Movie from '../models/Movie.js';
 import showRatingHelper from '../helpers/rating-helper.js';
 
 export default {
     getAll(filter = {}) {
-        let result = movieObj.movies;
+        let result = Movie.find({});
 
-        if (filter.search) {
-            result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
-        }
+        // if (filter.search) {
+        //     result = result.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
+        // }
 
-        if (filter.genre) {
-            result = result.filter(movie => movie.genre.toLowerCase() === filter.genre);
-        }
+        // if (filter.genre) {
+        //     result = result.filter(movie => movie.genre.toLowerCase() === filter.genre);
+        // }
 
-        if (filter.year) {
-            result = result.filter(movie => movie.year === filter.year);
-        }
+        // if (filter.year) {
+        //     result = result.filter(movie => movie.year === filter.year);
+        // }
 
         return result;
     },
