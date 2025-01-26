@@ -22,10 +22,18 @@ export default {
 
         return result;
     },
-    findMovie(movieId) {
-        const result = movieObj.movies.find( movie => movie.id == movieId);
-        result.rating = showRatingHelper(result.rating)
-        return result;
+    async findMovie(movieId) {
+        try {
+            const result = await Movie.findById(movieId).lean();
+            if (result) {
+                result.rating = showRatingHelper(result.rating);
+                return result;
+            }
+            return null;
+        } catch (error) {
+            console.error(error);
+            return null; 
+        }
     },
     createMovie(movieData) {
         const newId = uuid();

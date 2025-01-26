@@ -18,9 +18,9 @@ movieController.get('/search', (req, res) => {
     res.render('search', { movies, filter });
 });
 
-movieController.get('/:movieId/details', (req, res) => {
+movieController.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
-    let movie = movieService.findMovie(movieId);
+    let movie = await movieService.findMovie(movieId);
 
     res.render('details', movie);
 });
