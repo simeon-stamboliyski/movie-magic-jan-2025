@@ -1,6 +1,7 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
 import router from './routes.js';
+import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -9,6 +10,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
+
+try {
+    const uri = 'mongodb://localhost:27017/magic-movies';
+    await mongoose.connect(uri);
+    console.log('DB accessed successfully!');
+
+} catch (err) {
+    console.log('Cannot connect to DB');
+    console.log(err.message);
+}
 
 const port = 3000;
 
