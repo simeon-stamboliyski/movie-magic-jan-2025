@@ -19,7 +19,7 @@ router.post('/create', (req, res) => {
 router.get('/:movieId/attach', async (req, res) => {
     const movieId = req.params.movieId;
     let movie = await movieService.findMovie(movieId);
-    const casts = Array.from(await castService.getAll().lean()).map(cast => ({
+    const casts = Array.from(await castService.getAll({exclude: movie.casts}).lean()).map(cast => ({
             ...cast,
             _id: cast._id.toString()
         }));

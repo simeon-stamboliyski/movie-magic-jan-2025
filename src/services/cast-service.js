@@ -2,8 +2,14 @@ import Cast from '../models/Cast.js';
 import Movie from '../models/Movie.js';
 
 export default {
-    getAll() {
-        return Cast.find({});
+    getAll(filter = {}) {
+        let query = Cast.find({});
+
+        if (filter.exclude) {
+            query = query.find({_id: {$nin: filter.exclude}});
+        }
+
+        return query;
     },
     async create(castData) {
         return await Cast.create(castData);
