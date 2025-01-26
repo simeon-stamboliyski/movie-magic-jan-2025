@@ -1,4 +1,3 @@
-import { v4 as uuid } from 'uuid';
 import fs from 'fs';
 import path from 'path';
 import Movie from '../models/Movie.js';
@@ -35,28 +34,21 @@ export default {
             return null; 
         }
     },
-    createMovie(movieData) {
-        const newId = uuid();
+    async createMovie(movieData) {
 
         let newMovie = {
-            id: newId,
             ...movieData,
             rating: showRatingHelper(movieData.rating)
         };
         
         console.log(newMovie);
 
-        movieObj.movies.push(newMovie);
-
-        const filePath = path.resolve('src', 'config', 'database.js');
-
-        const updatedContent = `export default ${JSON.stringify(movieObj, null, 4)};`;
-
         try {
-            fs.writeFileSync(filePath, updatedContent, 'utf8');
-            console.log('Database updated successfully!');
+            const newMovie = new Movie(movieData);
+            await newMovie.save(); 
+            console.log('New movie added successfully');
         } catch (error) {
-            console.error('Failed to update database file:', error);
+            console.error('Error adding new movie:', error);
         }
     }
 };

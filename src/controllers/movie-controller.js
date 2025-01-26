@@ -7,8 +7,8 @@ movieController.get('/create', (req, res) => {
     res.render('create');
 });
 
-movieController.post('/create', (req, res) => {
-    movieService.createMovie(req.body);
+movieController.post('/create', async (req, res) => {
+    await movieService.createMovie(req.body);
     res.redirect('/');
 });
 
