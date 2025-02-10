@@ -19,7 +19,7 @@
     box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5);
 }
 
-.signupSection {
+.registerSection {
     background: url(../img/form-background.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -60,14 +60,14 @@
     transition: .2s;
 }
 
-.signupForm {
+.registerForm {
     width: 540px;
     padding: 30px 0;
     background: rgba(20, 40, 40, .8);
     transition: .2s;
 }
 
-.signupForm>h2 {
+.registerForm>h2 {
     font-weight: 350;
     font-size: 27px;
     margin-bottom: 0.8em;
