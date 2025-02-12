@@ -32,18 +32,19 @@ export default {
             return null; 
         }
     },
-    async createMovie(movieData) {
+    async createMovie(movieData, creatorId) {
 
         let newMovie = {
             ...movieData,
-            rating: showRatingHelper(movieData.rating)
+            rating: showRatingHelper(movieData.rating),
+            creator: creatorId
         };
         
         console.log(newMovie);
 
         try {
-            const newMovie = new Movie(movieData);
-            await newMovie.save(); 
+            const newMovie2 = new Movie(newMovie);
+            await newMovie2.save(); 
             console.log('New movie added successfully');
         } catch (error) {
             console.error('Error adding new movie:', error);

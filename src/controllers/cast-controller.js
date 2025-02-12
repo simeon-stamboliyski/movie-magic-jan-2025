@@ -25,7 +25,7 @@ router.get('/:movieId/attach', async (req, res) => {
         }));
     console.log(casts);
 
-    res.render('casts/attach', { movie, casts: casts }); 
+    res.render('casts/attach', { movie, casts: casts });
 });
 
 router.post('/:movieId/attach', async (req, res) => {
