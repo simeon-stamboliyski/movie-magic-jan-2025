@@ -25,9 +25,14 @@ try {
 
 const port = 3000;
 
-app.engine('hbs', handlebars.engine({
-    extname: 'hbs'
-}));
+const hbs = handlebars.create({
+    extname: 'hbs',
+    helpers: {
+        eq: (a, b) => a === b
+    }
+});
+
+app.engine('hbs', hbs.engine);
 
 app.set('view engine', 'hbs');
 

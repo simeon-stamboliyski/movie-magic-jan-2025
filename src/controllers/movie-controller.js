@@ -29,4 +29,26 @@ movieController.get('/:movieId/details', async (req, res) => {
     res.render('details', { movie, isCreator });
 });
 
+movieController.get('/:movieId/delete', async (req, res) => {
+    const movieId = req.params.movieId;
+
+    try {
+        await movieService.deleteMovie(movieId);
+        res.redirect('/');
+    } catch (error) {
+        res.redirect('/404');
+    }
+});
+
+movieController.get('/:movieId/edit', async (req, res) => {
+    const movieId = req.params.movieId;
+    let movie = await movieService.findMovie(movieId);
+
+    res.render('edit', { movie });
+});
+
+movieController.post('/:movieId/edit', async (req, res) => {
+    
+});
+
 export default movieController;

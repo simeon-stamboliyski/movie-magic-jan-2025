@@ -49,5 +49,13 @@ export default {
         } catch (error) {
             console.error('Error adding new movie:', error);
         }
+    },
+    async deleteMovie(movieId) {
+        try {
+            await Movie.findByIdAndDelete(movieId);
+            console.log(`Movie with ID ${movieId} deleted successfully.`);
+        } catch (error) {
+            console.error("Error deleting movie:", error);
+        }
     }
 };
