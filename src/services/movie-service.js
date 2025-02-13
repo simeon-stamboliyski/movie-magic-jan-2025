@@ -57,5 +57,13 @@ export default {
         } catch (error) {
             console.error("Error deleting movie:", error);
         }
+    },
+    async updateMovie(movieId, updatedMovie) {
+        try {
+            await Movie.findByIdAndUpdate(movieId, updatedMovie);
+            console.log(`Movie with ID ${movieId} updated successfully.`);
+        } catch (error) {
+            console.error("Error updating movie:", error);
+        }
     }
 };
