@@ -49,7 +49,7 @@ export default {
         }
 
         const payload = {
-            _id: user._id,
+            _id: User._id,
             email: User.email
         };
 
