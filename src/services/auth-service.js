@@ -26,7 +26,7 @@ function validateForm(email, password) {
 }
 
 export default {
-    register(userData) {
+    async register(userData) {
         if (!validateForm(userData.email, userData.password)) {
             throw new Error("Invalid email format or password is not strong enough.");
         }
