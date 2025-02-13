@@ -20,3 +20,8 @@ export const authMiddleWare = (req, res, next) => {
         res.redirect('/auth/login');
     }
 }
+
+export const checkLoggedIn = (req, res, next) => {
+    res.locals.isLoggedIn = !!req.user;
+    next();
+};

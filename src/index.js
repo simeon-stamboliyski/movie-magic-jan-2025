@@ -3,7 +3,7 @@ import handlebars from 'express-handlebars';
 import router from './routes.js';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
-import { authMiddleWare } from './middlewares/auth-middleware.js';
+import { authMiddleWare, checkLoggedIn } from './middlewares/auth-middleware.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -35,6 +35,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(authMiddleWare);
+app.use(checkLoggedIn);
 
 app.set('views',  __dirname + '/views');
 
